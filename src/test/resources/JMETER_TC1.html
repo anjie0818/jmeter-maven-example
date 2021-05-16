@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+          function getNextSibling(n)
+          {
+          var x = n.nextSibling;
+          var temp = n;
+          if ((x == null)||(x.nodeType == 3))
+          {
+          if(x != null)
+          {
+          x=x.nextSibling;
+          }
+          while (x == null)
+          {
+          x=temp.parentNode.nextSibling;
+          temp = temp.parentNode;
+          }
+          }
+          return x;
+          }
+
+          function getAddIcon(oSource)
+          {
+          var addIcon = oSource.firstChild.firstChild;
+          if (addIcon.nodeType == 3) //for Chrome and Safari
+          {
+          addIcon = addIcon.nextSibling;
+          }
+          return addIcon;
+          }
+
+          function clickItem(oSource,iconAdd, iconRemove)
+          {
+          
+          if (getNextSibling(oSource).style.display != "") {
+          getAddIcon(oSource).style.display = "none";
+          getAddIcon(oSource).nextSibling.style.display = "";
+          getNextSibling(oSource).style.display = "";
+          }
+          else {
+          getAddIcon(oSource).style.display = "";
+          getAddIcon(oSource).nextSibling.style.display = "none";
+          getNextSibling(oSource).style.display = "none";
+          }
+          }
+          function mouseOver(oSource)
+          {
+          oSource.style.textDecorationUnderline = true;
+          }
+          function mouseOut(oSource)
+          {
+          oSource.style.textDecorationUnderline = false;
+          }
+        </script><style type="text/css">
+          .arial_font {font-family:Arial}
+          .expandable_title:hover { cursor: pointer; text-decoration: underline; }
+          .table_section {border:0; width:90%; cellspacing:0; font-family:Arial}
+          .label {background-color:#ffff99;font-family:Arial}
+          .memo-title { width:10%; font-size:15px; font-family:Times}
+          .memo-content { font-size:14px; font-family:Times; word-break:break-all;padding:5px}
+          .memo-content .hint{padding:0px 10px 0px 10px;}
+          .memo-content .msg{padding:0px 10px 10px 10px;}
+          .customtable td { border-right: 1px solid #B7B7B7; border-bottom: 1px solid #B7B7B7; padding: 6px 6px 6px 12px; }
+          .customtable tr th, .customtable tr td { overflow: hidden; text-overflow: ellipsis; word-break:break-all; }
+        </style>
+</head>
+<body>
+<h2 class="arial_font">
+          Test Result:
+          <font color="red">
+              Failed
+            </font><a href="#fistFailedStep" class="memo-content">Go to the first failed step</a>
+</h2>
+<table border="0" class="table_section">
+<tr class="expandable_title" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" onclick="clickItem(this);"><td width="400px">
+<img id="iconAdd" style="display:" src="http://10.58.137.207:8089/sapanw/xsl/images/add.gif"><img id="iconRemove" style="display:none" src="http://10.58.137.207:8089/sapanw/xsl/images/remove.gif"><img height="11px" width="11px" hspace="3" src="http://10.58.137.207:8089/sapanw/xsl/images/pass.gif">单独请求</td></tr>
+<table style="border-left:1px solid #B7B7B7; border-top:1px solid #B7B7B7; display:none;" class="customtable" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="memo-title">
+          Request:
+        </td>
+<td class="memo-content">
+<div class="msg">
+<span style="padding-right:5px">GET</span><span>http://www.baidu.com/</span>
+</div>
+<div class="hint">GET Data:
+          </div>
+<div class="msg"></div>
+<div class="hint">RequestHeader:</div>
+<div class="msg">Connection: keep-alive
+Host: www.baidu.com
+User-Agent: Apache-HttpClient/4.5.7 (Java/1.8.0_161)
+</div>
+<div class="msg">
+            Time:
+            2021-05-14 15:12:42.847</div>
+</td>
+</tr>
+<tr>
+<td class="memo-title">
+          Response:
+        </td>
+<td class="memo-content">
+<div class="msg">
+            ResponseCode:
+            200</div>
+<div class="msg">
+            ResponseMessage:OK</div>
+<div class="hint">ResponseData:</div>
+<div class="msg">&lt;!DOCTYPE html&gt;
+&lt;!--STATUS OK--&gt;&lt;html&gt; &lt;head&gt;&lt;meta http-equiv=content-type content=text/html;charset=utf-8&gt;&lt;meta http-equiv=X-UA-Compatible content=IE=Edge&gt;&lt;meta content=always name=referrer&gt;&lt;link rel=stylesheet type=text/css href=http://s1.bdstatic.com/r/www/cache/bdorz/baidu.min.css&gt;&lt;title&gt;ç¾åº¦ä¸ä¸ï¼ä½ å°±ç¥é&lt;/title&gt;&lt;/head&gt; &lt;body link=#0000cc&gt; &lt;div id=wrapper&gt; &lt;div id=head&gt; &lt;div class=head_wrapper&gt; &lt;div class=s_form&gt; &lt;div class=s_form_wrapper&gt; &lt;div id=lg&gt; &lt;img hidefocus=true src=//www.baidu.com/img/bd_logo1.png width=270 height=129&gt; &lt;/div&gt; &lt;form id=form name=f action=//www.baidu.com/s class=fm&gt; &lt;input type=hidden name=bdorz_come value=1&gt; &lt;input type=hidden name=ie value=utf-8&gt; &lt;input type=hidden name=f value=8&gt; &lt;input type=hidden name=rsv_bp value=1&gt; &lt;input type=hidden name=rsv_idx value=1&gt; &lt;input type=hidden name=tn value=baidu&gt;&lt;span class="bg s_ipt_wr"&gt;&lt;input id=kw name=wd class=s_ipt value maxlength=255 autocomplete=off autofocus&gt;&lt;/span&gt;&lt;span class="bg s_btn_wr"&gt;&lt;input type=submit id=su value=ç¾åº¦ä¸ä¸ class="bg s_btn"&gt;&lt;/span&gt; &lt;/form&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=u1&gt; &lt;a href=http://news.baidu.com name=tj_trnews class=mnav&gt;æ°é»&lt;/a&gt; &lt;a href=http://www.hao123.com name=tj_trhao123 class=mnav&gt;hao123&lt;/a&gt; &lt;a href=http://map.baidu.com name=tj_trmap class=mnav&gt;å°å¾&lt;/a&gt; &lt;a href=http://v.baidu.com name=tj_trvideo class=mnav&gt;è§é¢&lt;/a&gt; &lt;a href=http://tieba.baidu.com name=tj_trtieba class=mnav&gt;è´´å§&lt;/a&gt; &lt;noscript&gt; &lt;a href=http://www.baidu.com/bdorz/login.gif?login&amp;amp;tpl=mn&amp;amp;u=http%3A%2F%2Fwww.baidu.com%2f%3fbdorz_come%3d1 name=tj_login class=lb&gt;ç»å½&lt;/a&gt; &lt;/noscript&gt; &lt;script&gt;document.write('&lt;a href="http://www.baidu.com/bdorz/login.gif?login&amp;tpl=mn&amp;u='+ encodeURIComponent(window.location.href+ (window.location.search === "" ? "?" : "&amp;")+ "bdorz_come=1")+ '" name="tj_login" class="lb"&gt;ç»å½&lt;/a&gt;');&lt;/script&gt; &lt;a href=//www.baidu.com/more/ name=tj_briicon class=bri style="display: block;"&gt;æ´å¤äº§å&lt;/a&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;div id=ftCon&gt; &lt;div id=ftConw&gt; &lt;p id=lh&gt; &lt;a href=http://home.baidu.com&gt;å³äºç¾åº¦&lt;/a&gt; &lt;a href=http://ir.baidu.com&gt;About Baidu&lt;/a&gt; &lt;/p&gt; &lt;p id=cp&gt;&amp;copy;2017&amp;nbsp;Baidu&amp;nbsp;&lt;a href=http://www.baidu.com/duty/&gt;ä½¿ç¨ç¾åº¦åå¿è¯»&lt;/a&gt;&amp;nbsp; &lt;a href=http://jianyi.baidu.com/ class=cp-feedback&gt;æè§åé¦&lt;/a&gt;&amp;nbsp;äº¬ICPè¯030173å·&amp;nbsp; &lt;img src=//www.baidu.com/img/gs.gif&gt; &lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt;
+</div>
+</td>
+</tr>
+<tr>
+<td class="memo-title">
+          SamplerData:
+        </td>
+<td class="memo-content"><div class="msg"></div></td>
+</tr>
+</table>
+</table>
+<table border="0" class="table_section">
+<tr class="expandable_title" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" onclick="clickItem(this);"><td width="400px">
+<img id="iconAdd" style="display:" src="http://10.58.137.207:8089/sapanw/xsl/images/add.gif"><img id="iconRemove" style="display:none" src="http://10.58.137.207:8089/sapanw/xsl/images/remove.gif"><img height="11px" width="11px" hspace="3" src="http://10.58.137.207:8089/sapanw/xsl/images/pass.gif">事务控制器</td></tr>
+<table style="border-left:1px solid #B7B7B7; border-top:1px solid #B7B7B7; display:none;" class="customtable" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="memo-title">
+          Request:
+        </td>
+<td class="memo-content">
+<div class="msg">
+<span style="padding-right:5px"></span><span></span>
+</div>
+<div class="hint"> Data:
+          </div>
+<div class="msg"></div>
+<div class="hint">RequestHeader:</div>
+<div class="msg"></div>
+<div class="msg">
+            Time:
+            2021-05-14 15:12:43.475</div>
+</td>
+</tr>
+<tr>
+<td class="memo-title">
+          Response:
+        </td>
+<td class="memo-content">
+<div class="msg">
+            ResponseCode:
+            200</div>
+<div class="msg">
+            ResponseMessage:Number of samples in transaction : 2, number of failing samples : 0</div>
+<div class="hint">ResponseData:</div>
+<div class="msg">Non-TEXT response data, cannot record: ()</div>
+</td>
+</tr>
+<tr>
+<td class="memo-title">
+          SamplerData:
+        </td>
+<td class="memo-content"><div class="msg"></div></td>
+</tr>
+</table>
+</table>
+<table border="0" class="table_section">
+<tr class="expandable_title" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" onclick="clickItem(this);"><td width="400px">
+<img id="iconAdd" style="display:" src="http://10.58.137.207:8089/sapanw/xsl/images/add.gif"><img id="iconRemove" style="display:none" src="http://10.58.137.207:8089/sapanw/xsl/images/remove.gif"><a name="fistFailedStep"></a><img height="11px" width="11px" hspace="3" src="http://10.58.137.207:8089/sapanw/xsl/images/error.gif">单独请求error</td></tr>
+<table style="border-left:1px solid #B7B7B7; border-top:1px solid #B7B7B7; display:none;" class="customtable" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+<td class="memo-title">
+          Request:
+        </td>
+<td class="memo-content">
+<div class="msg">
+<span style="padding-right:5px">GET</span><span>http://www.ba1idu.c1om/</span>
+</div>
+<div class="hint">GET Data:
+          </div>
+<div class="msg"></div>
+<div class="hint">RequestHeader:</div>
+<div class="msg">Connection: keep-alive
+Host: www.ba1idu.c1om
+User-Agent: Apache-HttpClient/4.5.7 (Java/1.8.0_161)
+</div>
+<div class="msg">
+            Time:
+            2021-05-14 15:12:44.519</div>
+</td>
+</tr>
+<tr>
+<td class="memo-title">
+          Response:
+        </td>
+<td class="memo-content">
+<div class="msg">
+            ResponseCode:
+            <font color="red">Non HTTP response code: java.net.UnknownHostException</font>
+</div>
+<div class="msg">
+            ResponseMessage:Non HTTP response message: www.ba1idu.c1om: nodename nor servname provided, or not known</div>
+<div class="hint">ResponseData:</div>
+<div class="msg">java.net.UnknownHostException: www.ba1idu.c1om: nodename nor servname provided, or not known
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1276)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1192)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1126)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112)
+	at org.apache.jmeter.protocol.http.sampler.HTTPHC4Impl$JMeterDefaultHttpClientConnectionOperator.connect(HTTPHC4Impl.java:336)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:374)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:185)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.apache.jmeter.protocol.http.sampler.HTTPHC4Impl.executeRequest(HTTPHC4Impl.java:843)
+	at org.apache.jmeter.protocol.http.sampler.HTTPHC4Impl.sample(HTTPHC4Impl.java:574)
+	at org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy.sample(HTTPSamplerProxy.java:67)
+	at org.apache.jmeter.protocol.http.sampler.HTTPSamplerBase.sample(HTTPSamplerBase.java:1231)
+	at org.apache.jmeter.protocol.http.sampler.HTTPSamplerBase.sample(HTTPSamplerBase.java:1220)
+	at org.apache.jmeter.threads.JMeterThread.doSampling(JMeterThread.java:622)
+	at org.apache.jmeter.threads.JMeterThread.executeSamplePackage(JMeterThread.java:546)
+	at org.apache.jmeter.threads.JMeterThread.processSampler(JMeterThread.java:486)
+	at org.apache.jmeter.threads.JMeterThread.run(JMeterThread.java:253)
+	at java.lang.Thread.run(Thread.java:748)
+</div>
+</td>
+</tr>
+<tr>
+<td class="memo-title">
+          SamplerData:
+        </td>
+<td class="memo-content"><div class="msg"></div></td>
+</tr>
+</table>
+</table>
+</body>
+</html>
