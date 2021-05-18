@@ -97,7 +97,11 @@ public class ParseXmlTree {
         if (size != 0){ //非子节点
             HTML = HTML + startHaveSub1+nodeShowMessage+startHaveSub2;
         }else { //子节点
-            HTML = HTML + startNotHaveSub1+nodeShowMessage+startNotHaveSub2+node.getTextTrim().replaceAll("<","").replaceAll(">","");
+            if (node.getTextTrim().replaceAll("\"","").equals("")){
+                node.remove(node);
+            }else {
+                HTML = HTML + startNotHaveSub1+nodeShowMessage+startNotHaveSub2+node.getTextTrim().replaceAll("<","").replaceAll(">","");
+            }
         }
         System.out.println("---html---"+HTML);
 
